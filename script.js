@@ -90,5 +90,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(showNextSlide, 3000); // Slide changes every 3 seconds
 });
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+import { getDatabase, ref, get, set, push, remove } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+
+// Firebase Configuration
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  databaseURL: "YOUR_DATABASE_URL",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const sectionsRef = ref(db, "sections");
+
+// Function to Load Sections
+the function loadSections() {
+  get(sectionsRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const container = document.getElementById("dynamic-sections");
+      container.innerHTML = "";
+
+      Object.values(data).forEach(section => {
+        let div = document.createElement("div");
+        div.id = section.id;
+        div.innerHTML = section.content;
+
+        // Delete Button
+        let btn = document.createElement("button");
+        btn.textContent = "Delete";
+        btn.onclick = () => deleteSection(section.id);
+
+        div.appendChild(btn);
+        container.appendChild(div);
+      });
+    }
+  });
+}
+
+// Function to Add Section
+function addSection() {
+  const newSectionRef = push(ref(db, "sections"));
+  const sectionId = newSectionRef.key;
+
+  set(newSectionRef, {
+    id: sectionId,
+    content: `<h2>New Section</h2><p>This is a new section added dynamically.</p>`
+  }).then(() => {
+    alert("Section added!");
+    loadSections();
+  });
+}
+
+// Function to Delete Section
+function deleteSection(sectionId) {
+  const sectionRef = ref(db, `sections/${sectionId}`);
+
+  remove(sectionRef).then(() => {
+    alert("Section deleted!");
+    loadSections();
+  });
+}
+
+// Load Sections on Page Load
+window.onload = loadSections;
 
  
