@@ -1056,4 +1056,18 @@ h1, .header-title {
     background-color: #ff4500;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 }
+@font-face {
+    font-family: 'Magneto';
+    src: url('MEGNETOB.TTF') format('truetype'),
+        
+    font-weight: normal;
+    font-style: normal;
+}
+
+.logo a {
+    font-family: 'Magneto', sans-serif;
+    font-size: 27px;
+    color: white;
+    text-decoration: none;
+}
 
