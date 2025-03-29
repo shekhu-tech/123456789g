@@ -1070,4 +1070,8 @@ h1, .header-title {
     color: white;
     text-decoration: none;
 }
+.logo a {
+    font-family: 'Lobster', cursive;
+}
+
 
