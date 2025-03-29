@@ -1039,3 +1039,21 @@ h1, .header-title {
         font-size: 22px !important; /* Mobile ke liye size adjust */
     }
 }
+/* toggle in box */
+.menu-btn {
+    background-color: #007bff; /* Button color */
+    color: white;
+    border: 0px solid #ff4500; /* Border around the button */
+    padding: 0px 7px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Attractive shadow effect */
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-btn:hover {
+    background-color: #ff4500;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
