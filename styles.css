@@ -1073,5 +1073,22 @@ h1, .header-title {
 .logo a {
     font-family: 'Lobster', cursive;
 }
+/* 🔹 Global Style for All Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Magneto', sans-serif;
+    color: #ff6600; /* Optional: Customize color */
+}
 
+/* 🔹 Sidebar Menu Styling */
+.sidebar ul li a {
+    font-family: 'Magneto', sans-serif;
+    font-size: 18px; /* Adjust size if needed */
+    color: white; /* Change menu text color */
+    text-transform: uppercase; /* Optional: Capital letters */
+}
+
+/* 🔹 Apply to Main Body Text (If Needed) */
+body {
+    font-family: 'Magneto', sans-serif;
+}
 
